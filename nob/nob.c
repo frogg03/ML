@@ -70,7 +70,7 @@ int main (int argc, char *argv[])
     if (!strcmp("run", argv[1]))
     {
         Cmd run = {0}; 
-        cmd_append(&run, TARGET);
+        cmd_append(&run, "./"TARGET);
 
         int r = cmd_run(&run); 
         cmd_free(run);
