@@ -17,7 +17,28 @@ Matrix mat_alloc(size_t rows, size_t cols)
 	return m;
 }
 
-void mat_dot(Matrix dat, Matrix a, Matrix b);
+void mat_dot(Matrix dst, Matrix a, Matrix b)
+{
+	assert(dst.data != NULL);
+	assert(a.data != NULL);
+	assert(b.data != NULL);
+
+	assert(a.cols == b.rows);
+	assert(dst.rows == a.rows);
+	assert(dst.cols == b.cols);
+
+	size_t inner = a.cols;
+
+	for (size_t r = 0; r < dst.rows; r++) {
+		for (size_t c = 0; c < dst.cols; c++) {
+			*mat_at(dst, r, c) = 0;
+			for (size_t k = 0; k < inner; k++) {
+				*mat_at(dst, r, c) += *mat_at(a, r, k) * *mat_at(b, k, c);
+			}
+		}	
+	}
+}
+
 void mat_sum(Matrix dst, Matrix a);
 void mat_print(Matrix m);
 
