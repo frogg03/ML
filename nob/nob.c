@@ -45,7 +45,7 @@ int main (int argc, char *argv[])
 
     cmd_append(&source_files,
         SOURCE_PATH"main.c",
-	SOURCE_PATH"ML.c"
+	    SOURCE_PATH"ml.c"
     );
 
     cmd_append(&linking_flags,
