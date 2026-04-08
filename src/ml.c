@@ -60,7 +60,7 @@ void mat_print(Matrix m)
 	for (size_t r = 0; r < m.rows; r++) {
 		printf("\t");
 		for (size_t c = 0; c < m.cols; c++) {
-			printf("%f", (float) *mat_at(m, r, c));
+			printf("%f ", (float) *mat_at(m, r, c));
 		}
 		printf("\n");
 	}
