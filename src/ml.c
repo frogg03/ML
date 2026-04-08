@@ -54,5 +54,15 @@ void mat_sum(Matrix dst, Matrix a)
 	}
 }
 
-void mat_print(Matrix m);
-
+void mat_print(Matrix m)
+{
+	printf("[");
+	for (size_t r = 0; r < m.rows; r++) {
+		printf("\t");
+		for (size_t c = 0; c < m.cols; c++) {
+			printf("%f", (float) *mat_at(m, r, c));
+		}
+		printf("\n");
+	}
+	printf("]");
+}
