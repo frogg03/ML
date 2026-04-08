@@ -31,12 +31,12 @@ int main (int argc, char *argv[])
     Cmd build_flags   = {0};
     Cmd source_files  = {0};
     Cmd linking_flags = {0};
-    
+
     cmd_append(&compile_flags,
         COMPILER,
         INCLUDES,
     );
-    
+
     cmd_append(&build_flags,
         WARNING_FLAGS,
         OPTIMIZATIONS,
@@ -44,14 +44,15 @@ int main (int argc, char *argv[])
     );
 
     cmd_append(&source_files,
-        SOURCE_PATH"main.c"
+        SOURCE_PATH"main.c",
+	SOURCE_PATH"ML.c"
     );
 
     cmd_append(&linking_flags,
         "-o", TARGET,
         LIBRARIES,
     );
-    
+
     {
         Cmd cmd = {0};
         cmd_extend(&cmd, &compile_flags);
@@ -59,7 +60,7 @@ int main (int argc, char *argv[])
         cmd_extend(&cmd, &source_files );
         cmd_extend(&cmd, &linking_flags);
 
-        int r = cmd_run(&cmd); 
+        int r = cmd_run(&cmd);
         cmd_free(cmd);
 
         if (!r) goto cleanup;
@@ -69,10 +70,10 @@ int main (int argc, char *argv[])
 
     if (!strcmp("run", argv[1]))
     {
-        Cmd run = {0}; 
+        Cmd run = {0};
         cmd_append(&run, "./"TARGET);
 
-        int r = cmd_run(&run); 
+        int r = cmd_run(&run);
         cmd_free(run);
 
         if (!r) goto cleanup;
