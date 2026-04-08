@@ -39,6 +39,20 @@ void mat_dot(Matrix dst, Matrix a, Matrix b)
 	}
 }
 
-void mat_sum(Matrix dst, Matrix a);
+void mat_sum(Matrix dst, Matrix a)
+{
+	assert(dst.data != NULL);
+	assert(a.data != NULL);
+
+	assert(dst.rows == a.rows);
+	assert(dst.cols == a.cols);
+
+	for (size_t r = 0; r < dst.rows; r++) {
+		for (size_t c = 0; c < dst.cols; c++) {
+			*mat_at(dst, r, c) += *mat_at(a, r, c);
+		}	
+	}
+}
+
 void mat_print(Matrix m);
 
