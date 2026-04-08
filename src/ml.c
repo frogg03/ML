@@ -64,5 +64,5 @@ void mat_print(Matrix m)
 		}
 		printf("\n");
 	}
-	printf("]");
+	printf("]\n");
 }
