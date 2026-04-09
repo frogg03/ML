@@ -5,20 +5,8 @@
 
 typedef float MyFloat;
 
-typedef struct {
-	size_t rows;
-	size_t cols;
-	MyFloat *data;
-} Matrix;
+typedef struct _Model Model;
 
-static inline MyFloat* mat_at(Matrix m, size_t row, size_t col)
-{
-	return &m.data[col + row * m.cols];
-}
-
-Matrix mat_alloc(size_t rows, size_t cols);
-void mat_dot(Matrix dat, Matrix a, Matrix b);
-void mat_sum(Matrix dst, Matrix a);
-void mat_print(Matrix m);
+Model *generate_model(size_t len, size_t layers[len]);
 
 #endif // ML_H_

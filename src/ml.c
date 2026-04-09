@@ -4,6 +4,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef struct {
+	size_t rows;
+	size_t cols;
+	MyFloat *data;
+} Matrix;
+
+typedef struct {
+	Matrix weights;
+	Matrix bias;
+	Matrix aux;
+} Layer;
+
+struct _Model {
+	size_t length;
+	Layer *layers;
+};
+
+static inline MyFloat* mat_at(Matrix m, size_t row, size_t col)
+{
+	return &m.data[col + row * m.cols];
+}
+
 Matrix mat_alloc(size_t rows, size_t cols)
 {
 	assert(rows != 0);
@@ -65,4 +87,11 @@ void mat_print(Matrix m)
 		printf("\n");
 	}
 	printf("]\n");
+}
+
+Model* generate_model(size_t len, size_t layers[len])
+{
+	(void) len;
+	(void) layers;
+	assert(0 && "TODO: Implement generate_model");
 }
